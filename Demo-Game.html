@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Show Nhậu</title>
+</head>
+<body>
+<div id="content">
+    <img src="a1/meo1.jpg" id="image1" alt="Không thấy mèo" data-name="meo" height="250" onclick="changeImg(this, 1)"><br>
+    <img src="a2/thu2.jpg" id="image2" alt="Không thấy thư" data-name="thu" height="250" onclick="changeImg(this, 2)"><br>
+    <img src="a3/bia3.jpg" id="image3" alt="Không thấy bia" data-name="bia" height="250" onclick="changeImg(this, 3)">
+
+</div>
+
+
+<script src="nhau.js"></script>
+<script>
+    function changeImg(e, index) {
+        let name = e.getAttribute("data-name");
+        if (name == 'meo') {
+            e.src = 'a' + index + '/bia' + index + '.jpg';
+            e.setAttribute('data-name', 'bia')
+        } else if (name == 'thu') {
+            e.src = 'a' + index + '/meo' + index + '.jpg';
+            e.setAttribute('data-name', 'meo')
+        } else {
+            e.src = 'a' + index + '/thu' + index + '.jpg';
+            e.setAttribute('data-name', 'thu')
+        }
+        checkWin();
+    }
+
+    function checkWin() {
+        let dataName1 = document.getElementById("image1").getAttribute("data-name");
+        let dataName2 = document.getElementById("image2").getAttribute("data-name");
+        let dataName3 = document.getElementById("image3").getAttribute("data-name");
+        if (dataName1 == dataName2 && dataName2 == dataName3) {
+            document.getElementById('content').style.border = '1px solid red'
+        }
+    }
+</script>
+</body>
+</html>
